@@ -3,8 +3,19 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
-  <router-view/>
+  <router-view />
+  <Footer />
 </template>
+
+<script>
+import Footer from "@/components/Footer"
+
+export default {
+  compornents: {
+    Footer,
+  },
+}
+</script>
 
 <style>
 #app {
