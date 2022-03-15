@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <GoogleLogin msg="Welcome to Your Vue.js App" />
+  <div class="login">
+    <GoogleLogin />
   </div>
 </template>
 
