@@ -1,4 +1,7 @@
 <template>
+  <nav class="navigation">
+    <router-link to="/postform">投稿ページ</router-link>
+  </nav>
   <div class="post_box" v-for="postform in postforms" :key="postform.id">
     <p>
       {{ postform.id }}<br />
@@ -60,21 +63,5 @@ export default {
 .post_box p {
   margin: 0;
   padding: 0;
-}
-.navigation {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 0.8rem;
-  font-size: 1.5rem;
-}
-
-.navigation__link {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.navigation__link--exact-active {
-  color: #42b983;
 }
 </style>

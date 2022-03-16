@@ -1,11 +1,13 @@
 <template>
   <div class="post-app">
     <div class="textbox">
+      <span class="text_title">どんなお酒？</span>
       <div>
         お酒の名前 <input class="osake_input" type="text" v-model="osake" />
       </div>
 
-      <span class="text_title">どんなお酒？</span>
+      <input type="date" v-model="day" />
+
       <div class="input_and_image">
         <textarea
           class="post_input"
@@ -85,35 +87,35 @@
           <span>
             <input
               id="review01"
-              type="checkbox"
+              type="radio"
               name="review"
               value="5"
               v-model="review"
             /><label for="review01">★</label>
             <input
               id="review02"
-              type="checkbox"
+              type="radio"
               name="review"
               value="4"
               v-model="review"
             /><label for="review02">★</label>
             <input
               id="review03"
-              type="checkbox"
+              type="radio"
               name="review"
               value="3"
               v-model="review"
             /><label for="review03">★</label>
             <input
               id="review04"
-              type="checkbox"
+              type="radio"
               name="review"
               value="2"
               v-model="review"
             /><label for="review04">★</label>
             <input
               id="review05"
-              type="checkbox"
+              type="radio"
               name="review"
               value="1"
               v-model="review"
@@ -125,32 +127,27 @@
 
     <button class="post_button" v-on:click="postTweet">投稿</button>
   </div>
-  <div class="post_box" v-for="postform in postforms" :key="postform.id">
-    <p>
-      {{ postform.id }}<br />
-      {{ postform.date }}
-      {{ postform.name }}<br />
-      {{ postform.area }}<br />
-      {{ postform.text }}<br />
-
-      <img src="{{postform.photo}}" />
-    </p>
-    <button>いいね！</button>
-    <button>お気に入り★</button>
-  </div>
 </template>
 
 <script>
-import { collection, addDoc, getDocs } from "firebase/firestore"
+import { collection, addDoc } from "firebase/firestore"
 import { db } from "@/firebase"
 
 export default {
   data() {
     return {
       seen: false,
+      id: "",
+      date: "",
+      day: "",
+      name: "",
+      area: "",
+      text: "",
       url: "",
+      bought: "",
+      point: "",
+
       postforms: [],
-      review: "",
     }
   },
   methods: {
@@ -164,23 +161,14 @@ export default {
     postTweet() {
       addDoc(collection(db, "postforms"), {
         date: new Date(),
+        bought: this.day,
         name: this.osake,
         text: this.post,
         area: this.AreaName,
-        hyouka: this.review.value,
+        point: this.review,
         photo: this.url,
       })
     },
-  },
-  created() {
-    getDocs(collection(db, "postforms")).then((snapshot) => {
-      snapshot.forEach((doc) => {
-        this.postforms.push({
-          id: doc.id,
-          ...doc.data(),
-        })
-      })
-    })
   },
 }
 </script>
