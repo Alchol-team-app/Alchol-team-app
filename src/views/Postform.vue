@@ -16,7 +16,7 @@
           placeholder="紹介文を書こう！"
           maxlength="400"
         />
-        <div class="image_preview" v-if="url"><img src="url" /></div>
+        <div class="image_preview" v-if="url"><img v-bind:src="url" /></div>
       </div>
       <button v-on:click="hyouji" class="photo_button">+ 写真</button>
       <div v-if="seen">
@@ -173,9 +173,13 @@ export default {
 }
 </script>
 <style>
+.post_app {
+  background-color: #d0baba;
+  padding: 10px;
+}
 .area_and_review {
   display: flex;
-  padding: 1rem;
+  padding: 2rem;
 }
 .stars span {
   display: flex;
@@ -202,7 +206,7 @@ export default {
 }
 .post_input {
   width: 50%;
-  height: 20rem;
+  height: 15rem;
   resize: none;
   font-size: medium;
   font-family: sans-serif;
@@ -211,12 +215,11 @@ textarea::placeholder {
   font-family: sans-serif;
   font-size: medium;
 }
-.image_preview {
-  width: 50%;
-  height: 20rem;
-}
 .input_and_image {
   display: flex;
+}
+.image_preview img {
+  width: 100%;
 }
 .photo_button {
   display: inline-block;
@@ -270,13 +273,12 @@ textarea::placeholder {
 
 .textbox {
   position: relative;
-  margin: 2em 0;
+  margin: 5em 0;
   padding: 0.5em 1em;
   border: solid 3px #990000;
   border-radius: 8px;
   background-color: ivory;
-
-  height: 30rem;
+  height: 40rem;
 }
 .textbox .text_title {
   position: absolute;
@@ -289,34 +291,5 @@ textarea::placeholder {
   background: #fff;
   color: #990000;
   font-weight: bold;
-}
-.post_box {
-  position: relative;
-  margin: 2em 0 2em 40px;
-  padding: 8px 15px;
-  background: #d3b2b2;
-  border-radius: 30px;
-}
-.post_box:before {
-  font-family: FontAwesome;
-  content: "\f111";
-  position: absolute;
-  font-size: 15px;
-  left: -40px;
-  bottom: 0;
-  color: #d3b2b2;
-}
-.post_box:after {
-  font-family: FontAwesome;
-  content: "\f111";
-  position: absolute;
-  font-size: 23px;
-  left: -23px;
-  bottom: 0;
-  color: #d3b2b2;
-}
-.post_box p {
-  margin: 0;
-  padding: 0;
 }
 </style>

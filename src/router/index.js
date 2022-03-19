@@ -4,6 +4,7 @@ import Postform from "@/views/Postform.vue"
 import Browsing_Page from "@/views/Browsing_Page.vue"
 import Cocktail_Postform from "@/views/Cocktail_Postform.vue"
 import Cocktail_Browsing from "@/views/Cocktail_Browsing.vue"
+import Login from "../views/Login.vue"
 
 const routes = [
   {
@@ -11,12 +12,7 @@ const routes = [
     name: "Home",
     component: Home,
   },
-  {
-    path: "/about",
-    name: "About",
 
-    component: () => import("@/views/About.vue"),
-  },
   {
     path: "/postform",
     name: "Postform",
@@ -36,6 +32,11 @@ const routes = [
     path: "/cocktail_browsing",
     name: "Cocktail_Browsing",
     component: Cocktail_Browsing,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
 ]
 

@@ -4,7 +4,7 @@
       <router-link to="/cocktail_postform">投稿ページ</router-link>
     </nav>
     <div
-      class="post_box"
+      class="C_post_box"
       v-for="cocktail_postform in cocktail_postforms"
       :key="cocktail_postform.id"
     >
@@ -44,14 +44,14 @@ export default {
 </script>
 
 <style>
-.post_box {
+.C_post_box {
   position: relative;
   margin: 2em 0 2em 40px;
   padding: 8px 15px;
   background: #e68de6;
   border-radius: 30px;
 }
-.post_box:before {
+.C_post_box:before {
   font-family: FontAwesome;
   content: "\f111";
   position: absolute;
@@ -60,7 +60,7 @@ export default {
   bottom: 0;
   color: #e68de6;
 }
-.post_box:after {
+.C_post_box:after {
   font-family: FontAwesome;
   content: "\f111";
   position: absolute;
@@ -69,7 +69,7 @@ export default {
   bottom: 0;
   color: #e68de6;
 }
-.post_box p {
+.C_post_box p {
   margin: 0;
   padding: 0;
 }

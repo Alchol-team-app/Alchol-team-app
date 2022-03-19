@@ -26,6 +26,45 @@
         />
       </div>
 
+      <div class="">
+        <span>
+          <input
+            id="tag1"
+            type="checkbox"
+            name="tag"
+            value=""
+            v-model="tag"
+          /><label for="tag1">ジン</label>
+          <input
+            id="tag2"
+            type="checkbox"
+            name="tag"
+            value=""
+            v-model="tag"
+          /><label for="tag2"></label>
+          <input
+            id="tag3"
+            type="checkbox"
+            name="tag"
+            value=""
+            v-model="tag"
+          /><label for="tag3"></label>
+          <input
+            id="tag4"
+            type="checkbox"
+            name="tag"
+            value=""
+            v-model="tag"
+          /><label for="tag4"></label>
+          <input
+            id="tag5"
+            type="checkbox"
+            name="tag"
+            value=""
+            v-model="tag"
+          /><label for="tag5"></label>
+        </span>
+      </div>
       <div class="area_and_review">
         <div class="stars">
           <span>
