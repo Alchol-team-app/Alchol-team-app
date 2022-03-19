@@ -130,6 +130,12 @@
 </template>
 
 <script>
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "@/firebase"
 
@@ -159,15 +165,62 @@ export default {
       this.url = URL.createObjectURL(file)
     },
     postTweet() {
-      addDoc(collection(db, "postforms"), {
-        date: new Date(),
-        bought: this.day,
-        name: this.osake,
-        text: this.post,
-        area: this.AreaName,
-        point: this.review,
-        photo: this.url,
-      })
+      const file = this.$refs.preview.files[0].name
+      const storage = getStorage()
+      const storageRef = ref(storage, file)
+      const uploadTask = uploadBytesResumable(storageRef, file)
+
+      // Listen for state changes, errors, and completion of the upload.
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          console.log("Upload is " + progress + "% done")
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused")
+              break
+            case "running":
+              console.log("Upload is running")
+              break
+          }
+        },
+        (error) => {
+          // A full list of error codes is available at
+          // https://firebase.google.com/docs/storage/web/handle-errors
+          switch (error.code) {
+            case "storage/unauthorized":
+              // User doesn't have permission to access the object
+              break
+            case "storage/canceled":
+              // User canceled the upload
+              break
+
+            // ...
+
+            case "storage/unknown":
+              // Unknown error occurred, inspect error.serverResponse
+              break
+          }
+        },
+        () => {
+          // Upload completed successfully, now we can get the download URL
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log("File available at", downloadURL)
+            addDoc(collection(db, "postforms"), {
+              date: new Date(),
+              bought: this.day,
+              name: this.osake,
+              text: this.post,
+              area: this.AreaName,
+              point: this.review,
+              image_url: this.downloadURL,
+            })
+          })
+        }
+      )
     },
   },
 }
