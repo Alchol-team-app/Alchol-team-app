@@ -1,15 +1,17 @@
 <template>
-  <div class="app">
+  <div>
     <nav class="navigation">
-      <router-link to="/postform" class="toukou">投稿ページ</router-link>
+      <router-link to="/cocktail_postform">投稿ページ</router-link>
     </nav>
-    <div class="post_box" v-for="postform in postforms" :key="postform.id">
+    <div
+      class="post_box"
+      v-for="cocktail_postform in cocktail_postforms"
+      :key="cocktail_postform.id"
+    >
       <p>
-        {{ postform.id }}<br />
-        {{ postform.bought }}<br />
-        {{ postform.name }}<br />
-        {{ postform.area }}<br />
-        {{ postform.text }}<br />
+        {{ cocktail_postform.id }}<br />
+        {{ cocktail_postform.name }}<br />
+        {{ cocktail_postform.text }}<br />
 
         <img src="" />
       </p>
@@ -25,17 +27,16 @@ import { db } from "@/firebase"
 export default {
   data() {
     return {
-      postforms: [],
+      cocktail_postforms: [],
     }
   },
   created() {
-    getDocs(collection(db, "postforms")).then((snapshot) => {
+    getDocs(collection(db, "cocktail_postforms")).then((snapshot) => {
       snapshot.forEach((doc) => {
-        console.log(this.postforms),
-          this.postforms.push({
-            id: doc.id,
-            ...doc.data(),
-          })
+        this.cocktail_postforms.push({
+          id: doc.id,
+          ...doc.data(),
+        })
       })
     })
   },
@@ -43,23 +44,11 @@ export default {
 </script>
 
 <style>
-.app {
-  background-color: antiquewhite;
-  padding: 5%;
-}
-.toukou {
-  position: relative;
-  left: 10%;
-  background-color: #ceb849;
-  border: 10px solid transparent;
-  border-radius: 35px;
-}
-
 .post_box {
   position: relative;
   margin: 2em 0 2em 40px;
   padding: 8px 15px;
-  background: #d3b2b2;
+  background: #e68de6;
   border-radius: 30px;
 }
 .post_box:before {
@@ -69,7 +58,7 @@ export default {
   font-size: 15px;
   left: -40px;
   bottom: 0;
-  color: #d3b2b2;
+  color: #e68de6;
 }
 .post_box:after {
   font-family: FontAwesome;
@@ -78,7 +67,7 @@ export default {
   font-size: 23px;
   left: -23px;
   bottom: 0;
-  color: #d3b2b2;
+  color: #e68de6;
 }
 .post_box p {
   margin: 0;
