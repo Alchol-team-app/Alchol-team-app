@@ -1,24 +1,26 @@
 <template>
-  <div id="nav">
+  <Header />
+  <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
-  <router-view />
+  <router-view /> -->
   <Footer />
 </template>
 
 <script>
+import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 
 export default {
-  compornents: {
+  components: {
+    Header,
     Footer,
   },
 }
 </script>
-
-<style>
-#app {
+<style scoped>
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -37,5 +39,5 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
