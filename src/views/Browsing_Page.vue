@@ -1,9 +1,10 @@
 <template>
   <div class="app">
     <nav class="navigation">
+      <div>{{ this.$route.params.id }}</div>
       <router-link to="/postform" class="toukou">投稿</router-link>
     </nav>
-    <div class="post_box" v-for="postform in postforms" :key="postform.id">
+    <div class="post_box" v-for="postform in resultKey" :key="postform.id">
       <p>id:{{ postform.id }}<br /></p>
       <div class="post_box_text">
         <p>
@@ -40,6 +41,13 @@ export default {
           })
       })
     })
+  },
+  computed: {
+    resultKey() {
+      return this.postforms.filter((postform) => {
+        return postform.area === this.$route.params.id
+      })
+    },
   },
 }
 </script>

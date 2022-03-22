@@ -3,13 +3,11 @@
     <div class="nav__bar">
       <div class="tittle__logo">カクテル・地酒紹介</div>
       <div class="nav__items">
-        <router-link to="/" class="nav__item nav__link">Home</router-link>
+        <router-link to="/home" class="nav__item nav__link">Home</router-link>
         <router-link to="/my-page" class="nav__item nav__link"
           >MyPage</router-link
         >
-        <router-link to="/log-in" class="nav__item nav__link">
-          LogIn</router-link
-        >
+        <router-link to="/" class="nav__item nav__link"> LogIn</router-link>
       </div>
     </div>
     <router-view />
