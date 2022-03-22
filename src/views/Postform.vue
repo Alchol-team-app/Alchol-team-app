@@ -144,14 +144,12 @@ export default {
     return {
       seen: false,
       id: "",
-      date: "",
       day: "",
-      name: "",
-      area: "",
-      text: "",
+      osake: "",
+      AreaName: "",
+      post: "",
       url: "",
-      bought: "",
-      point: "",
+      review: "",
 
       postforms: [],
     }
@@ -165,9 +163,9 @@ export default {
       this.url = URL.createObjectURL(file)
     },
     postTweet() {
-      const file = this.$refs.preview.files[0].name
+      const file = this.$refs.preview.files[0]
       const storage = getStorage()
-      const storageRef = ref(storage, file)
+      const storageRef = ref(storage, file.name)
       const uploadTask = uploadBytesResumable(storageRef, file)
 
       // Listen for state changes, errors, and completion of the upload.
@@ -216,7 +214,7 @@ export default {
               text: this.post,
               area: this.AreaName,
               point: this.review,
-              image_url: this.downloadURL,
+              image_url: downloadURL,
             })
           })
         }
@@ -331,7 +329,7 @@ textarea::placeholder {
   border: solid 3px #990000;
   border-radius: 8px;
   background-color: ivory;
-  height: 40rem;
+  height: 100%;
 }
 .textbox .text_title {
   position: absolute;

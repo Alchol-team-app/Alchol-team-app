@@ -1,6 +1,6 @@
 <template>
-  <div class="post-app">
-    <div class="textbox">
+  <div class="cocktail-app">
+    <div class="C_textbox">
       <span class="text_title">どんなお酒？</span>
       <div>
         お酒の名前 <input class="osake_input" type="text" v-model="osake" />
@@ -14,9 +14,9 @@
           placeholder="紹介文を書こう！"
           maxlength="400"
         />
-        <div class="image_preview" v-if="url"><img src="url" /></div>
+        <div class="image_preview" v-if="url"><img v-bind:src="url" /></div>
       </div>
-      <button v-on:click="hyouji" class="photo_button">+ 写真</button>
+      <button v-on:click="hyouji" class="C_photo_button">+ 写真</button>
       <div v-if="seen">
         <input
           type="file"
@@ -32,40 +32,40 @@
             id="tag1"
             type="checkbox"
             name="tag"
-            value=""
+            value="ジン"
             v-model="tag"
-          /><label for="tag1">ジン</label>
+          /><label for="tag1">ジン系</label>
           <input
             id="tag2"
             type="checkbox"
             name="tag"
-            value=""
+            value="ラム"
             v-model="tag"
-          /><label for="tag2"></label>
+          /><label for="tag2">ラム系</label>
           <input
             id="tag3"
             type="checkbox"
             name="tag"
-            value=""
+            value="ウォッカ"
             v-model="tag"
-          /><label for="tag3"></label>
+          /><label for="tag3">ウォッカ系</label>
           <input
             id="tag4"
             type="checkbox"
             name="tag"
-            value=""
+            value="テキーラ"
             v-model="tag"
-          /><label for="tag4"></label>
+          /><label for="tag4">テキーラ系</label>
           <input
             id="tag5"
             type="checkbox"
             name="tag"
-            value=""
+            value="その他"
             v-model="tag"
-          /><label for="tag5"></label>
+          /><label for="tag5">その他</label>
         </span>
       </div>
-      <div class="area_and_review">
+      <div class="C_review">
         <div class="stars">
           <span>
             <input
@@ -108,11 +108,17 @@
       </div>
     </div>
 
-    <button class="post_button" v-on:click="postTweet">投稿</button>
+    <button class="C_post_button" v-on:click="postTweet">投稿</button>
   </div>
 </template>
 
 <script>
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "@/firebase"
 
@@ -121,12 +127,10 @@ export default {
     return {
       seen: false,
       id: "",
-      date: "",
-      day: "",
-      name: "",
-      text: "",
+      osake: "",
+      post: "",
       url: "",
-      point: "",
+      review: "",
 
       cocktail_postforms: [],
     }
@@ -140,19 +144,70 @@ export default {
       this.url = URL.createObjectURL(file)
     },
     postTweet() {
-      addDoc(collection(db, "cocktail_postforms"), {
-        date: new Date(),
-        name: this.osake,
-        text: this.post,
-        point: this.review,
-        photo: this.url,
-      })
+      const file = this.$refs.preview.files[0]
+      const storage = getStorage()
+      const storageRef = ref(storage, file.name)
+      const uploadTask = uploadBytesResumable(storageRef, file)
+
+      // Listen for state changes, errors, and completion of the upload.
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          console.log("Upload is " + progress + "% done")
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused")
+              break
+            case "running":
+              console.log("Upload is running")
+              break
+          }
+        },
+        (error) => {
+          // A full list of error codes is available at
+          // https://firebase.google.com/docs/storage/web/handle-errors
+          switch (error.code) {
+            case "storage/unauthorized":
+              // User doesn't have permission to access the object
+              break
+            case "storage/canceled":
+              // User canceled the upload
+              break
+
+            // ...
+
+            case "storage/unknown":
+              // Unknown error occurred, inspect error.serverResponse
+              break
+          }
+        },
+        () => {
+          // Upload completed successfully, now we can get the download URL
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log("File available at", downloadURL)
+            addDoc(collection(db, "cocktail_postforms"), {
+              date: new Date(),
+              name: this.osake,
+              text: this.post,
+              point: this.review,
+              photo: this.url,
+            })
+          })
+        }
+      )
     },
   },
 }
 </script>
+
 <style>
-.area_and_review {
+.cocktail_app {
+  padding: auto;
+}
+.C_review {
   display: flex;
   padding: 1rem;
 }
@@ -192,34 +247,33 @@ textarea::placeholder {
 }
 .image_preview {
   width: 50%;
-  height: 20rem;
 }
 .input_and_image {
   display: flex;
 }
-.photo_button {
+.C_photo_button {
   display: inline-block;
   text-decoration: none;
-  color: #990000;
+  color: #9088e3;
   width: 60px;
   height: 60px;
   line-height: 60px;
   border-radius: 50%;
-  border: solid 2px #990000;
+  border: solid 2px #9088e3;
   text-align: center;
   overflow: hidden;
   font-weight: bold;
   transition: 0.4s;
 }
-.photo_button:hover {
-  background: #d3b2b2;
+.C_photo_button:hover {
+  background: #e39088;
 }
-.post_button {
+.C_post_button {
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
-  color: #990000;
-  border: solid 2px #990000;
+  color: #9088e3;
+  border: solid 2px #9088e3;
   border-radius: 3px;
   transition: 0.4s;
   width: 70px;
@@ -228,36 +282,22 @@ textarea::placeholder {
   left: 50%;
 }
 
-.post_button:hover {
-  background: #990000;
+.C_post_button:hover {
+  background: #9088e3;
   color: white;
 }
-.file_input {
-  display: inline-block;
-  text-decoration: none;
-  background: #990000;
-  color: #fff;
-  width: 120px;
-  height: 120px;
-  line-height: 120px;
-  border-radius: 50%;
-  text-align: center;
-  overflow: hidden;
-  transition: 0.4s;
-  position: fixed;
-}
 
-.textbox {
+.C_textbox {
   position: relative;
   margin: 2em 0;
   padding: 0.5em 1em;
-  border: solid 3px #990000;
+  border: solid 3px #9088e3;
   border-radius: 8px;
   background-color: ivory;
 
-  height: 30rem;
+  height: 100%;
 }
-.textbox .text_title {
+.C_textbox .text_title {
   position: absolute;
   display: inline-block;
   top: -13px;
@@ -266,36 +306,7 @@ textarea::placeholder {
   line-height: 1;
   font-size: 19px;
   background: #fff;
-  color: #990000;
+  color: #9088e3;
   font-weight: bold;
-}
-.post_box {
-  position: relative;
-  margin: 2em 0 2em 40px;
-  padding: 8px 15px;
-  background: #d3b2b2;
-  border-radius: 30px;
-}
-.post_box:before {
-  font-family: FontAwesome;
-  content: "\f111";
-  position: absolute;
-  font-size: 15px;
-  left: -40px;
-  bottom: 0;
-  color: #d3b2b2;
-}
-.post_box:after {
-  font-family: FontAwesome;
-  content: "\f111";
-  position: absolute;
-  font-size: 23px;
-  left: -23px;
-  bottom: 0;
-  color: #d3b2b2;
-}
-.post_box p {
-  margin: 0;
-  padding: 0;
 }
 </style>
