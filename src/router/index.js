@@ -5,7 +5,7 @@ import Browsing_Page from "@/views/Browsing_Page.vue"
 import Cocktail_Postform from "@/views/Cocktail_Postform.vue"
 import Cocktail_Browsing from "@/views/Cocktail_Browsing.vue"
 import Login from "../views/Login.vue"
-
+import Map from "@/components/Map.vue"
 const routes = [
   {
     path: "/home",
@@ -37,6 +37,11 @@ const routes = [
     path: "/",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/map",
+    name: "Map",
+    component: Map,
   },
 ]
 

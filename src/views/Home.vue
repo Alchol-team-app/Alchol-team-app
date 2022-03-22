@@ -8,8 +8,11 @@
     <div class="layout-main">
       <div class="cocktail">
         <!-- <h1 class="sub-tittle">カクテル紹介・投稿欄</h1> -->
-        <router-link to="/cocktail" v-on:click="カクテル;" class="router-link"
-          ><h1>カクテル紹介・投稿欄</h1>
+        <router-link
+          to="/cocktail_browsing"
+          v-on:click="カクテル;"
+          class="router-link"
+          ><h1>カクテル紹介</h1>
           <!-- <router-link :to="/cocktail">Topへ戻る</router-link> -->
           <div class="cocktail-menue">
             <img
@@ -26,8 +29,8 @@
       </div>
 
       <div class="zizake">
-        <router-link to="/zizake" v-on:click="地酒;" class="router-link"
-          ><h1>地酒紹介・投稿欄</h1>
+        <router-link to="/map" v-on:click="地酒;" class="router-link"
+          ><h1>地酒紹介</h1>
           <div class="zizake-menue">
             <img src="@/assets/download.jpg" alt="地酒" class="picture2" />
             <div class="zizake-detail">
@@ -51,14 +54,6 @@ import Header from "@/components/Header.vue"
 export default {
   components: {
     Header,
-  },
-  methods: {
-    intro1() {
-      this.$router.push("/cocktail")
-    },
-    intro２() {
-      this.$router.push("/zizake")
-    },
   },
 }
 </script>
