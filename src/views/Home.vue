@@ -1,5 +1,6 @@
 <template>
   <body>
+    <Header />
     <div class="lower-tittle">
       <h1 class="main-tittle">各種紹介</h1>
     </div>
@@ -46,7 +47,11 @@
   </body>
 </template>
 <script>
+import Header from "@/components/Header.vue"
 export default {
+  components: {
+    Header,
+  },
   methods: {
     intro1() {
       this.$router.push("/cocktail")

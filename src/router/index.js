@@ -1,25 +1,48 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import { createRouter, createWebHistory } from "vue-router"
+import Home from "../views/Home.vue"
+import Postform from "@/views/Postform.vue"
+import Browsing_Page from "@/views/Browsing_Page.vue"
+import Cocktail_Postform from "@/views/Cocktail_Postform.vue"
+import Cocktail_Browsing from "@/views/Cocktail_Browsing.vue"
+import Login from "../views/Login.vue"
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/home",
+    name: "Home",
+    component: Home,
+  },
+
+  {
+    path: "/postform",
+    name: "Postform",
+    component: Postform,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: "/browsingpage",
+    name: "Browsing_Page",
+    component: Browsing_Page,
+  },
+  {
+    path: "/cocktail_postform",
+    name: "Cocktail_Postform",
+    component: Cocktail_Postform,
+  },
+  {
+    path: "/cocktail_browsing",
+    name: "Cocktail_Browsing",
+    component: Cocktail_Browsing,
+  },
+  {
+    path: "/",
+    name: "Login",
+    component: Login,
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 })
 
 export default router
