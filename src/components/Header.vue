@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="nav__bar">
-      <div class="tittle__logo">~カクテル・地酒紹介~</div>
+      <div class="tittle__logo">カクテル・地酒紹介</div>
       <div class="nav__items">
         <router-link to="/" class="nav__item nav__link">Home</router-link>
         <router-link to="/my-page" class="nav__item nav__link"
@@ -18,12 +18,17 @@
 
 <style scoped>
 .nav__bar {
+  padding: 0;
+  margin: 0;
   height: 75px;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  background-color: rgb(4, 80, 157);
   border: solid 3px #000000;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  box-sizing: border-box;
 }
 .nav__link {
   display: flex;
@@ -42,9 +47,9 @@
 }
 .tittle__logo {
   display: flex;
-
+  align-items: center;
   font-size: xx-large;
-  padding-left: 40%;
+  padding-left: 5%;
   color: #fff;
 }
 .nav__items {

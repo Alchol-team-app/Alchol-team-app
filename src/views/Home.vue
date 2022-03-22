@@ -7,35 +7,35 @@
     <div class="layout-main">
       <div class="cocktail">
         <!-- <h1 class="sub-tittle">カクテル紹介・投稿欄</h1> -->
-        <button v-on:click="intro1" class="sub-tittle">
-          カクテル紹介・投稿欄
-        </button>
-        <!-- <router-link :to="/cocktail">Topへ戻る</router-link> -->
-        <div class="cocktail-menue">
-          <img
-            src="@/assets/adptDSC_3614-750x499.jpg"
-            alt="カクテル"
-            class="picture1"
-          />
-          <div class="cocktail-detail">
-            アルコールを含む調合飲料。調合の仕方を一般に処方といい，種類は3000を超えるという。<br />
-            1920年代にロンドンやパリで流行し，日本でも大正末期にはカクテル・バーが登場。（仮）
+        <router-link to="/cocktail" v-on:click="カクテル;" class="router-link"
+          ><h1>カクテル紹介・投稿欄</h1>
+          <!-- <router-link :to="/cocktail">Topへ戻る</router-link> -->
+          <div class="cocktail-menue">
+            <img
+              src="@/assets/adptDSC_3614-750x499.jpg"
+              alt="カクテル"
+              class="picture1"
+            />
+            <div class="cocktail-detail">
+              アルコールを含む調合飲料。調合の仕方を一般に処方といい，種類は3000を超えるという。<br />
+              1920年代にロンドンやパリで流行し，日本でも大正末期にはカクテル・バーが登場。
+            </div>
           </div>
-        </div>
+        </router-link>
       </div>
 
       <div class="zizake">
-        <!-- <h1 class="sub-tittle">地酒紹介・投稿欄</h1> -->
-        <button v-on:click="intro2" class="sub-tittle">地酒紹介・投稿欄</button>
-        <!-- <router-link :to="/zizake">Topへ戻る</router-link> -->
-        <div class="zizake-menue">
-          <img src="@/assets/download.jpg" alt="地酒" class="picture2" />
-          <div class="zizake-detail">
-            地酒とは、その土地の文化に合わせ、その土地の材料で造られる個性豊かな日本酒である。<br />
-            1970年代に地酒ブームが起こり、造り手が本当に作りたい酒造りを試みる流れが生まれ、<br />
-            幻の銘酒といわれるような地酒が数多く誕生。（仮）
+        <router-link to="/zizake" v-on:click="地酒;" class="router-link"
+          ><h1>地酒紹介・投稿欄</h1>
+          <div class="zizake-menue">
+            <img src="@/assets/download.jpg" alt="地酒" class="picture2" />
+            <div class="zizake-detail">
+              地酒とは、その土地の文化に合わせ、その土地の材料で造られる個性豊かな日本酒である。<br />
+              1970年代に地酒ブームが起こり、造り手が本当に作りたい酒造りを試みる流れが生まれ、<br />
+              幻の銘酒といわれるような地酒が数多く誕生。
+            </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
 
@@ -62,16 +62,20 @@ export default {
 body {
   background-color: lemonchiffon;
   font-family: monospace;
+  margin: 0;
+  padding: 0;
 }
 .lower-tittle {
   display: flex;
   justify-content: center;
-  background-color: lemonchiffon;
 }
 .layout-main {
   display: flex;
   justify-content: space-evenly;
-  background-color: lemonchiffon;
+}
+h1 {
+  display: flex;
+  justify-content: center;
 }
 .sub-tittle {
   display: flex;
@@ -98,16 +102,21 @@ body {
   border: solid 3px #000000;
   margin-right: 10%;
 }
-
+.router-link {
+  text-decoration: none;
+  color: black;
+}
 .picture1 {
   right: 20%;
   width: 80%;
-  padding-left: 10%;
+  margin-left: 10%;
+  border-radius: 10px;
 }
 .picture2 {
   height: auto;
   width: 80%;
-  padding-left: 10%;
+  margin-left: 10%;
+  border-radius: 10px;
 }
 .cocktail-detail {
   font-size: x-small;
