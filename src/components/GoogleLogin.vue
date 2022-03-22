@@ -18,6 +18,7 @@ export default {
           credential.accessToken
           result.user
           // ...
+          this.$router.push("/home")
         })
         .catch((error) => {
           error.code
