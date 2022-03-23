@@ -10,5 +10,3 @@
     <router-link to="/logout">ログアウト</router-link>
   </nav>
 </template>
-
-<script></script>
