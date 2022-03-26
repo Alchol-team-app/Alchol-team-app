@@ -5,6 +5,10 @@
     </nav>
     <div class="post_box" v-for="postform in postforms" :key="postform.id">
       <p>id:{{ postform.id }}<br /></p>
+      <p>
+        <span class="star5_rating" v-bind:data-rate="postform.point"></span>
+        {{ postform.point }}
+      </p>
       <div class="post_box_text">
         <p>
           購入日：{{ postform.bought }}<br />
@@ -16,7 +20,10 @@
         </div>
       </div>
 
-      <button>いいね！</button>
+      <button class="heart" v-on:click="countup">いいね！</button>
+      <div class="iine_count">
+        {{ count }}
+      </div>
     </div>
   </div>
 </template>
@@ -27,8 +34,14 @@ import { db } from "@/firebase"
 export default {
   data() {
     return {
+      count: 0,
       postforms: [],
     }
+  },
+  methods: {
+    countup: function () {
+      this.count += 1
+    },
   },
   created() {
     getDocs(collection(db, "postforms")).then((snapshot) => {
@@ -53,7 +66,7 @@ export default {
   text-align: center;
 }
 .photo {
-  width: 75%;
+  width: 50%;
 }
 .toukou {
   position: relative;
@@ -119,4 +132,50 @@ export default {
   margin: 0;
   padding: 0;
 }
+.star5_rating {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  white-space: nowrap;
+  color: #cccccc;
+}
+
+.star5_rating:before,
+.star5_rating:after {
+  content: "★★★★★";
+}
+
+.star5_rating:after {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ffcf32;
+}
+
+.star5_rating[data-rate="5"]:after {
+  width: 100%;
+} /* 星5 */
+
+.star5_rating[data-rate="4"]:after {
+  width: 80%;
+} /* 星4 */
+
+.star5_rating[data-rate="3"]:after {
+  width: 60%;
+} /* 星3 */
+
+.star5_rating[data-rate="2"]:after {
+  width: 40%;
+} /* 星2 */
+
+.star5_rating[data-rate="1"]:after {
+  width: 20%;
+} /* 星1 */
+
+.star5_rating[data-rate="0"]:after {
+  width: 0%;
+} /* 星0 */
 </style>
