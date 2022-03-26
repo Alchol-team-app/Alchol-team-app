@@ -46,11 +46,104 @@
     <div class="recomend-menue">
       <h1>オススメのお酒欄</h1>
     </div>
-    <div class="box">私達のオススメのお酒</div>
+    <div class="box">
+      <div class="wrap slide-paused" ontouchstart="">
+        <ul class="slideshow">
+          <li class="content content-hover">
+            <h2 class="last2">カシスオレンジ</h2>
+            <img src="@/assets/カシオレ.png" class="pic3" />
+            <div class="last">
+              カシスオレンジはカシスリキュールをオレンジジュースで割った定番のカクテルです。
+              グラスの底にカシスリキュールを注いで、氷を入れて上からオレンジジュースを注ぐと、オレンジと紫色の見た目も美しいカクテルが出来ます。
+            </div>
+          </li>
+          <li class="content content-hover">
+            <h2 class="last2">白岳しろ</h2>
+            <img src="@/assets/白岳.jpeg" class="pic3" />
+            <div class="last">
+              癖が無く、焼酎の独特な香りや味が苦手という方でも比較的飲みやすい焼酎です。
+              白岳しろは、フルーティな香りが特徴でもあるので女性にも好まれると思います。
+            </div>
+          </li>
+          <li class="content content-hover">
+            <h2 class="last2">ジン・トニック</h2>
+            <img src="@/assets/ジン.jpeg" class="pic3" />
+            <div class="last">
+              ジンとトニックウォーターを混ぜたカクテル。ライムをのせると家でもオシャレなバー気分を味わえます！
+              ライムの爽やかさとトニックウォーターの甘さでとても飲みやすいカクテルです。
+            </div>
+          </li>
+          <li class="content content-hover">
+            <h2 class="last2">月のセレナーデ(赤)</h2>
+            <img src="src/assets/ワイン.jpg" class="pic3" />
+            <div class="last">
+              岩手県産のぶどうから作られた地ワインです。
+              でも飲めるような優しい味です。
+            </div>
+          </li>
+          <li class="content content-hover">
+            <h2 class="last2">雪雀•純米大吟醸</h2>
+            <img src="src/assets/日本酒.webp" class="pic3" />
+            <div class="last">
+              透明感のある香りと、ほんのりとした甘味と旨味が調和された気品ある味わいです。
+            </div>
+          </li>
+          <li class="content content-hover">
+            <h2 class="last2">テキーラサンライズ</h2>
+            <img src="src/assets/パフェ.jpg" class="pic3" />
+            <div class="last">
+              テキーラのキレのある味わいとオレンジジュースの爽やかな酸味、
+              グレナデンシロップの濃厚な甘みが合わさった甘酸っぱい味が特徴です。
+            </div>
+          </li>
+        </ul>
+        <ul class="slideshow">
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+        </ul>
+        <ul class="slideshow">
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+          <li class="content content-hover">
+            <img src="@/assets/download.jpg" class="pic3" />
+          </li>
+        </ul>
+      </div>
+    </div>
   </body>
 </template>
 <script>
 import Header from "@/components/Header.vue"
+
 export default {
   components: {
     Header,
@@ -73,6 +166,7 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
+
 h1 {
   display: flex;
   justify-content: center;
@@ -90,6 +184,12 @@ h1 {
   border-radius: 10px;
   border: solid 3px #000000;
   margin-left: 10%;
+  transition: all 0.8s;
+}
+.cocktail:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 3px 10px 0 #333;
+  cursor: pointer;
 }
 
 .zizake {
@@ -101,6 +201,12 @@ h1 {
   border-radius: 10px;
   border: solid 3px #000000;
   margin-right: 10%;
+  transition: all 0.8s;
+}
+.zizake:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 3px 10px 0 #333;
+  cursor: pointer;
 }
 .router-link {
   text-decoration: none;
@@ -174,10 +280,72 @@ h1 {
   display: flex;
   justify-content: center;
   background-color: white;
-  height: 500px;
+  height: 400px;
   border-radius: 15px;
   margin-left: 13%;
   margin-right: 13%;
+  /* border: solid 3px #000000; */
+}
+
+.pic3 {
+  margin: 50px;
+  margin-top: -10px;
+  border-radius: 10px;
+  display: flex;
+  width: 200px; /*任意の横幅を指定*/
+  height: 200px; /*任意の高さを指定*/
+  object-fit: cover;
+}
+
+.wrap {
+  display: flex;
+  /* align-items: center; */
+  /* height: 340px; */
+  overflow: hidden;
+}
+.slideshow {
+  display: flex;
+  animation: loop-slide 60s infinite linear 1s both;
+  margin: 0px;
+  padding: 0px;
+  background-color: lemonchiffon;
+}
+@keyframes loop-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.slide-paused:hover .slideshow {
+  animation-play-state: paused;
+}
+.content-hover {
+  transition: all 0.8s;
+  border-radius: 10px;
   border: solid 3px #000000;
+  margin: 20px;
+  background-color: white;
+}
+.content-hover:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 3px 10px 0 #333;
+
+  cursor: pointer;
+}
+.last2 {
+  display: flex;
+  justify-content: center;
+}
+.last {
+  display: flex;
+  justify-content: center;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+ul {
+  list-style-type: none;
 }
 </style>

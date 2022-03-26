@@ -149,7 +149,7 @@ export default {
       AreaName: "",
       post: "",
       url: "",
-      review: "",
+      review: "0",
 
       postforms: [],
     }
