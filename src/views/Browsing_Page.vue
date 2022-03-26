@@ -4,7 +4,11 @@
       <div>{{ this.$route.params.id }}</div>
       <router-link to="/postform" class="toukou">投稿</router-link>
     </nav>
-    <div class="post_box" v-for="postform in resultKey" :key="postform.id">
+    <div
+      class="post_box"
+      v-for="(postform, index) in postforms"
+      :key="postform.id"
+    >
       <p>id:{{ postform.id }}<br /></p>
       <p>
         <span class="star5_rating" v-bind:data-rate="postform.point"></span>
@@ -21,9 +25,9 @@
         </div>
       </div>
 
-      <button class="heart" v-on:click="countup">いいね！</button>
+      <button class="heart" v-on:click="countup(index)">拍手👏！</button>
       <div class="iine_count">
-        {{ count }}
+        {{ postform.iinecount }}
       </div>
     </div>
   </div>
@@ -35,13 +39,12 @@ import { db } from "@/firebase"
 export default {
   data() {
     return {
-      count: 0,
       postforms: [],
     }
   },
   methods: {
-    countup: function () {
-      this.count += 1
+    countup: function (index) {
+      this.postforms[index].iinecount += 1
     },
   },
   created() {
