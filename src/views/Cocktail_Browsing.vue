@@ -1,7 +1,9 @@
 <template>
   <div class="C_app">
+    <div class="idou"></div>
     <nav class="navigation">
       <router-link to="/cocktail_postform" class="C_toukou">投稿</router-link>
+      <div class="C_kensaku">検索</div>
     </nav>
     <div
       class="C_post_box"
@@ -9,14 +11,27 @@
       :key="cocktail_postform.id"
     >
       <p>id：{{ cocktail_postform.id }}<br /></p>
+      <p>
+        <span
+          class="star5_rating"
+          v-bind:data-rate="cocktail_postform.point"
+        ></span>
+        {{ cocktail_postform.point }}
+      </p>
       <div class="C_post_box_text">
-        お酒の名称：{{ cocktail_postform.name }}<br />
-        {{ cocktail_postform.text }}<br />
+        <p>
+          お酒の名称：{{ cocktail_postform.name }}
+          {{ cocktail_postform.cocktail }}<br />
+          {{ cocktail_postform.text }}<br />
+        </p>
+        <div class="C_photo_frame">
+          <img class="C_photo" v-bind:src="cocktail_postform.image_url" />
+        </div>
       </div>
-      <div C_phot_frame>
-        <img class="C_photo" v-bind:src="cocktail_postform.image_url" />
+      <button class="heart" v-on:click="countup">いいね！</button>
+      <div class="iine_count">
+        {{ count }}
       </div>
-      <button>いいね！</button>
     </div>
   </div>
 </template>
@@ -27,9 +42,16 @@ import { db } from "@/firebase"
 export default {
   data() {
     return {
+      count: 0,
       cocktail_postforms: [],
     }
   },
+  methods: {
+    countup: function () {
+      this.count += 1
+    },
+  },
+
   created() {
     getDocs(collection(db, "cocktail_postforms")).then((snapshot) => {
       snapshot.forEach((doc) => {
@@ -48,9 +70,24 @@ export default {
   background-color: #ffffbb;
   padding: 5%;
 }
+.idou {
+  display: inline;
+}
 .C_toukou {
+  padding: auto;
   position: relative;
   left: 10%;
+  width: 8rem;
+  text-align: center;
+  background-color: #baddff;
+  border: 10px solid transparent;
+  border-radius: 35px;
+}
+.C_kensaku {
+  text-align: center;
+  position: relative;
+  left: 50%;
+  width: 8rem;
   background-color: #baddff;
   border: 10px solid transparent;
   border-radius: 35px;
@@ -88,7 +125,7 @@ export default {
   text-align: center;
 }
 .C_photo {
-  width: 75%;
+  width: 50%;
 }
 .C_post_box_text {
   margin: 2em 0;
@@ -116,5 +153,75 @@ export default {
 .C_post_box_text p {
   margin: 0;
   padding: 0;
+}
+.star5_rating {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  white-space: nowrap;
+  color: #cccccc;
+}
+
+.star5_rating:before,
+.star5_rating:after {
+  content: "★★★★★";
+}
+
+.star5_rating:after {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ffcf32;
+}
+
+.star5_rating[data-rate="5"]:after {
+  width: 100%;
+} /* 星5 */
+
+.star5_rating[data-rate="4"]:after {
+  width: 80%;
+} /* 星4 */
+
+.star5_rating[data-rate="3"]:after {
+  width: 60%;
+} /* 星3 */
+
+.star5_rating[data-rate="2"]:after {
+  width: 40%;
+} /* 星2 */
+
+.star5_rating[data-rate="1"]:after {
+  width: 20%;
+} /* 星1 */
+
+.star5_rating[data-rate="0"]:after {
+  width: 0%;
+} /* 星0 */
+.heart {
+  border-radius: 3px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 220px;
+  padding: 10px 25px;
+  color: #fff;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  background: rgb(245, 173, 221);
+}
+.heart:hover {
+  background: rgb(253, 146, 146);
+}
+.iine_count {
+  position: relative;
+  background: #fff;
+  width: 5rem;
+  text-align: center;
+  left: 45%;
 }
 </style>

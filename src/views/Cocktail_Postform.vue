@@ -26,7 +26,7 @@
         />
       </div>
 
-      <div class="">
+      <div>
         <span>
           <input
             id="tag1"
@@ -130,8 +130,8 @@ export default {
       osake: "",
       post: "",
       url: "",
-      review: "",
-
+      review: "0",
+      tag: [],
       cocktail_postforms: [],
     }
   },
@@ -193,7 +193,8 @@ export default {
               name: this.osake,
               text: this.post,
               point: this.review,
-              photo: this.url,
+              cocktail: this.tag,
+              image_url: downloadURL,
             })
           })
         }
