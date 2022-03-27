@@ -5,12 +5,6 @@
 
       <div class="nav__items">
         <router-link to="/home" class="nav__item nav__link">Home</router-link>
-        <router-link to="/mypage" class="nav__item nav__link"
-          >MyPage</router-link
-        >
-        <router-link to="/logout" class="nav__item nav__link">
-          logout</router-link
-        >
         <router-link to="/cocktail1" class="nav__item nav__link"
           >カクテル紹介</router-link
         >
@@ -22,6 +16,12 @@
         >
         <router-link to="/zizake2" class="nav__item nav__link"
           >地酒投稿</router-link
+        >
+        <router-link to="/mypage" class="nav__item nav__link"
+          >MyPage</router-link
+        >
+        <router-link to="/logout" class="nav__item nav__link">
+          logout</router-link
         >
       </div>
     </div>

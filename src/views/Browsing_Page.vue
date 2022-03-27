@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="app">
     <nav class="navigation">
       <div>{{ this.$route.params.id }}</div>
@@ -20,18 +21,16 @@
           <img class="photo" v-bind:src="postform.image_url" />
         </div>
       </div>
-
-      <button class="heart" v-on:click="countup">いいね！</button>
-      <div class="iine_count">
-        {{ count }}
-      </div>
     </div>
   </div>
+  <Footer />
 </template>
 
 <script>
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "@/firebase"
+import Header from "@/components/Header.vue"
+import Footer from "@/components/Footer.vue"
 export default {
   data() {
     return {
@@ -39,11 +38,7 @@ export default {
       postforms: [],
     }
   },
-  methods: {
-    countup: function () {
-      this.count += 1
-    },
-  },
+  methods: {},
   created() {
     getDocs(collection(db, "postforms")).then((snapshot) => {
       snapshot.forEach((doc) => {
@@ -62,6 +57,7 @@ export default {
       })
     },
   },
+  components: { Header, Footer },
 }
 </script>
 

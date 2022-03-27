@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="C_app">
     <div class="idou"></div>
     <nav class="navigation">
@@ -11,6 +12,9 @@
       :key="cocktail_postform.id"
     >
       <p>id：{{ cocktail_postform.id }}<br /></p>
+      <p>
+        {{ cocktail_postform.user_name }}
+      </p>
       <p>
         <span
           class="star5_rating"
@@ -28,30 +32,24 @@
           <img class="C_photo" v-bind:src="cocktail_postform.image_url" />
         </div>
       </div>
-      <button class="heart" v-on:click="countup">いいね！</button>
-      <div class="iine_count">
-        {{ count }}
-      </div>
     </div>
   </div>
+  <Footer />
 </template>
 
 <script>
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "@/firebase"
+import Header from "@/components/Header.vue"
+import Footer from "@/components/Footer.vue"
+
 export default {
   data() {
     return {
-      count: 0,
       cocktail_postforms: [],
     }
   },
-  methods: {
-    countup: function () {
-      this.count += 1
-    },
-  },
-
+  methods: {},
   created() {
     getDocs(collection(db, "cocktail_postforms")).then((snapshot) => {
       snapshot.forEach((doc) => {
@@ -62,6 +60,7 @@ export default {
       })
     })
   },
+  components: { Header, Footer },
 }
 </script>
 
