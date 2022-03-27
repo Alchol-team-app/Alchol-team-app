@@ -17,7 +17,7 @@
         <router-link to="/cocktail_postform" class="nav__item nav__link"
           >カクテル投稿</router-link
         >
-        <router-link to="/browsingpage/:id" class="nav__item nav__link"
+        <router-link to="/map" class="nav__item nav__link"
           >地酒紹介</router-link
         >
         <router-link to="/postform" class="nav__item nav__link"
