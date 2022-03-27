@@ -75,7 +75,7 @@
           </li>
           <li class="content content-hover">
             <h2 class="last2">月のセレナーデ(赤)</h2>
-            <img src="src/assets/ワイン.jpg" class="pic3" />
+            <img src="@/assets/ワイン.jpg" class="pic3" />
             <div class="last">
               岩手県産のぶどうから作られた地ワインです。
               でも飲めるような優しい味です。
@@ -83,14 +83,14 @@
           </li>
           <li class="content content-hover">
             <h2 class="last2">雪雀•純米大吟醸</h2>
-            <img src="src/assets/日本酒.webp" class="pic3" />
+            <img src="@/assets/日本酒.webp" class="pic3" />
             <div class="last">
               透明感のある香りと、ほんのりとした甘味と旨味が調和された気品ある味わいです。
             </div>
           </li>
           <li class="content content-hover">
             <h2 class="last2">テキーラサンライズ</h2>
-            <img src="src/assets/パフェ.jpg" class="pic3" />
+            <img src="@/assets/パフェ.jpg" class="pic3" />
             <div class="last">
               テキーラのキレのある味わいとオレンジジュースの爽やかな酸味、
               グレナデンシロップの濃厚な甘みが合わさった甘酸っぱい味が特徴です。
@@ -99,42 +99,100 @@
         </ul>
         <ul class="slideshow">
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">カシスオレンジ</h2>
+            <img src="@/assets/カシオレ.png" class="pic3" />
+            <div class="last">
+              カシスオレンジはカシスリキュールをオレンジジュースで割った定番のカクテルです。
+              グラスの底にカシスリキュールを注いで、氷を入れて上からオレンジジュースを注ぐと、オレンジと紫色の見た目も美しいカクテルが出来ます。
+            </div>
           </li>
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">白岳しろ</h2>
+            <img src="@/assets/白岳.jpeg" class="pic3" />
+            <div class="last">
+              癖が無く、焼酎の独特な香りや味が苦手という方でも比較的飲みやすい焼酎です。
+              白岳しろは、フルーティな香りが特徴でもあるので女性にも好まれると思います。
+            </div>
           </li>
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">ジン・トニック</h2>
+            <img src="@/assets/ジン.jpeg" class="pic3" />
+            <div class="last">
+              ジンとトニックウォーターを混ぜたカクテル。ライムをのせると家でもオシャレなバー気分を味わえます！
+              ライムの爽やかさとトニックウォーターの甘さでとても飲みやすいカクテルです。
+            </div>
           </li>
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">月のセレナーデ(赤)</h2>
+            <img src="@/assets/ワイン.jpg" class="pic3" />
+            <div class="last">
+              岩手県産のぶどうから作られた地ワインです。
+              でも飲めるような優しい味です。
+            </div>
           </li>
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">雪雀•純米大吟醸</h2>
+            <img src="＠/assets/日本酒.webp" class="pic3" />
+            <div class="last">
+              透明感のある香りと、ほんのりとした甘味と旨味が調和された気品ある味わいです。
+            </div>
           </li>
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">テキーラサンライズ</h2>
+            <img src="@/assets/パフェ.jpg" class="pic3" />
+            <div class="last">
+              テキーラのキレのある味わいとオレンジジュースの爽やかな酸味、
+              グレナデンシロップの濃厚な甘みが合わさった甘酸っぱい味が特徴です。
+            </div>
           </li>
         </ul>
         <ul class="slideshow">
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">カシスオレンジ</h2>
+            <img src="@/assets/カシオレ.png" class="pic3" />
+            <div class="last">
+              カシスオレンジはカシスリキュールをオレンジジュースで割った定番のカクテルです。
+              グラスの底にカシスリキュールを注いで、氷を入れて上からオレンジジュースを注ぐと、オレンジと紫色の見た目も美しいカクテルが出来ます。
+            </div>
           </li>
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">白岳しろ</h2>
+            <img src="@/assets/白岳.jpeg" class="pic3" />
+            <div class="last">
+              癖が無く、焼酎の独特な香りや味が苦手という方でも比較的飲みやすい焼酎です。
+              白岳しろは、フルーティな香りが特徴でもあるので女性にも好まれると思います。
+            </div>
           </li>
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">ジン・トニック</h2>
+            <img src="@/assets/ジン.jpeg" class="pic3" />
+            <div class="last">
+              ジンとトニックウォーターを混ぜたカクテル。ライムをのせると家でもオシャレなバー気分を味わえます！
+              ライムの爽やかさとトニックウォーターの甘さでとても飲みやすいカクテルです。
+            </div>
           </li>
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">月のセレナーデ(赤)</h2>
+            <img src="＠/assets/ワイン.jpg" class="pic3" />
+            <div class="last">
+              岩手県産のぶどうから作られた地ワインです。
+              でも飲めるような優しい味です。
+            </div>
           </li>
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">雪雀•純米大吟醸</h2>
+            <img src="＠/assets/日本酒.webp" class="pic3" />
+            <div class="last">
+              透明感のある香りと、ほんのりとした甘味と旨味が調和された気品ある味わいです。
+            </div>
           </li>
           <li class="content content-hover">
-            <img src="@/assets/download.jpg" class="pic3" />
+            <h2 class="last2">テキーラサンライズ</h2>
+            <img src="@/assets/パフェ.jpg" class="pic3" />
+            <div class="last">
+              テキーラのキレのある味わいとオレンジジュースの爽やかな酸味、
+              グレナデンシロップの濃厚な甘みが合わさった甘酸っぱい味が特徴です。
+            </div>
           </li>
         </ul>
       </div>
@@ -245,6 +303,7 @@ h1 {
   position: relative;
   text-align: center;
   font-size: 30px;
+  color: rgb(222, 212, 212);
 }
 .main-tittle:before {
   content: "";
@@ -267,6 +326,7 @@ h1 {
 .recomend-menue {
   position: relative;
   text-align: center;
+  color: white;
 }
 /* なぜ逆になるのか質問  */
 .recomend-menue:before {
@@ -302,16 +362,17 @@ h1 {
 
 .wrap {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   /* height: 340px; */
   overflow: hidden;
+  background-color: rgba (148, 255, 226, 0.5);
 }
 .slideshow {
   display: flex;
   animation: loop-slide 60s infinite linear 1s both;
   margin: 0px;
   padding: 0px;
-  background-color: lemonchiffon;
+  background-color: rgb(219 121 32);
 }
 @keyframes loop-slide {
   from {
@@ -331,13 +392,7 @@ h1 {
   margin: 20px;
   background-color: white;
 }
-.content-hover:hover {
-  transform: translateY(-5px);
 
-  box-shadow: 0 3px 10px 0 #333;
-
-  cursor: pointer;
-}
 .last2 {
   display: flex;
   justify-content: center;
