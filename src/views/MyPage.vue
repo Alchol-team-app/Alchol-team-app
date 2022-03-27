@@ -8,7 +8,6 @@
       :key="cocktail_postform.id"
     >
       <p>id：{{ cocktail_postform.id }}<br /></p>
-      <p>uid：{{ cocktail_postform.user_name }}<br /></p>
       <p>
         <span
           class="star5_rating"
