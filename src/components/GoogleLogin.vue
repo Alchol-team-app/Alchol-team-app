@@ -1,7 +1,7 @@
 <template>
-  <div class="title">タイトル</div>
+  <div class="title">お酒と私</div>
   <div class="form">
-    <h1>Log In</h1>
+    <h1>LOG IN</h1>
     <div class="button">
       <button @click="login" class="login-button">Googleでログイン</button>
     </div>
@@ -21,8 +21,11 @@ export default {
       signInWithPopup(auth, provider)
         .then((result) => {
           const credential = GoogleAuthProvider.credentialFromResult(result)
-          credential.accessToken
-          result.user
+          const token = credential.accessToken
+          console.log(token)
+          // The signed-in user info.
+          const user = result.user
+          console.log(user.uid)
           this.$router.push("/home")
         })
         .catch((error) => {
@@ -64,6 +67,7 @@ body {
 h1 {
   text-align: center;
   padding: 1em 0;
+  font-family: "MS Pゴシック", sans-serif;
 }
 
 .button {

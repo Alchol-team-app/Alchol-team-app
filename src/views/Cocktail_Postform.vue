@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="cocktail-app">
     <div class="C_textbox">
       <span class="text_title">どんなお酒？</span>
@@ -110,9 +111,11 @@
 
     <button class="C_post_button" v-on:click="postTweet">投稿</button>
   </div>
+  <Footer />
 </template>
 
 <script>
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 import {
   getStorage,
   ref,
@@ -121,6 +124,8 @@ import {
 } from "firebase/storage"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "@/firebase"
+import Header from "@/components/Header.vue"
+import Footer from "@/components/Footer.vue"
 
 export default {
   data() {
@@ -149,6 +154,19 @@ export default {
       const storageRef = ref(storage, file.name)
       const uploadTask = uploadBytesResumable(storageRef, file)
 
+      const auth = getAuth()
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log(user)
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          this.uid = user.uid
+        } else {
+          // User is signed out
+          // ...
+        }
+      })
+
       // Listen for state changes, errors, and completion of the upload.
       uploadTask.on(
         "state_changed",
@@ -176,9 +194,7 @@ export default {
             case "storage/canceled":
               // User canceled the upload
               break
-
             // ...
-
             case "storage/unknown":
               // Unknown error occurred, inspect error.serverResponse
               break
@@ -190,6 +206,7 @@ export default {
             console.log("File available at", downloadURL)
             addDoc(collection(db, "cocktail_postforms"), {
               date: new Date(),
+              user_name: this.uid,
               name: this.osake,
               text: this.post,
               point: this.review,
@@ -201,6 +218,7 @@ export default {
       )
     },
   },
+  components: { Header, Footer },
 }
 </script>
 

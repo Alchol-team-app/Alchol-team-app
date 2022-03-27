@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <header>
     <h1 class="meguri">日本地酒巡り</h1>
   </header>
@@ -191,15 +192,19 @@
       </div>
     </div>
   </body>
+  <Footer />
 </template>
 
 <script>
+import Header from "./Header.vue"
+import Footer from "./Footer.vue"
 export default {
   methods: {
     Map() {
       this.$router.push("")
     },
   },
+  components: { Header, Footer },
 }
 </script>
 
