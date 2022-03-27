@@ -2,13 +2,8 @@
   <div class="app">
     <nav class="navigation">
       <div>{{ this.$route.params.id }}</div>
-      <router-link to="/postform" class="toukou">投稿</router-link>
     </nav>
-    <div
-      class="post_box"
-      v-for="(postform, index) in postforms"
-      :key="postform.id"
-    >
+    <div class="post_box" v-for="postform in resultKey" :key="postform.id">
       <p>id:{{ postform.id }}<br /></p>
       <p>
         <span class="star5_rating" v-bind:data-rate="postform.point"></span>
@@ -24,11 +19,6 @@
           <img class="photo" v-bind:src="postform.image_url" />
         </div>
       </div>
-
-      <button class="heart" v-on:click="countup(index)">拍手👏！</button>
-      <div class="iine_count">
-        {{ postform.iinecount }}
-      </div>
     </div>
   </div>
 </template>
@@ -42,11 +32,7 @@ export default {
       postforms: [],
     }
   },
-  methods: {
-    countup: function (index) {
-      this.postforms[index].iinecount += 1
-    },
-  },
+
   created() {
     getDocs(collection(db, "postforms")).then((snapshot) => {
       snapshot.forEach((doc) => {

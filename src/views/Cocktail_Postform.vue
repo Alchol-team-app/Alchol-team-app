@@ -199,6 +199,7 @@ export default {
           })
         }
       )
+      this.$router.push("/cocktail_browsing")
     },
   },
 }

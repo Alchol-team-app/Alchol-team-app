@@ -150,7 +150,7 @@ export default {
       post: "",
       url: "",
       review: "0",
-      count: 0,
+
       postforms: [],
     }
   },
@@ -215,7 +215,6 @@ export default {
               area: this.AreaName,
               point: this.review,
               image_url: downloadURL,
-              iinecount: this.count,
             })
           })
         }

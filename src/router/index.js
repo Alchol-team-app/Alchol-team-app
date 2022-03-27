@@ -21,7 +21,7 @@ const routes = [
     component: Postform,
   },
   {
-    path: "/browsingpage/:id",
+    path: "/browsingpage",
     name: "Browsing_Page",
     component: Browsing_Page,
   },

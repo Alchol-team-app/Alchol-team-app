@@ -1,13 +1,12 @@
 <template>
   <div class="C_app">
     <div class="idou"></div>
-    <nav class="navigation">
-      <router-link to="/cocktail_postform" class="C_toukou">投稿</router-link>
-      <div class="C_kensaku">検索</div>
-    </nav>
+
+    <input type="text" v-model="keyword" />
+
     <div
       class="C_post_box"
-      v-for="cocktail_postform in cocktail_postforms"
+      v-for="cocktail_postform in filterdcocktail_postforms"
       :key="cocktail_postform.id"
     >
       <p>id：{{ cocktail_postform.id }}<br /></p>
@@ -28,10 +27,6 @@
           <img class="C_photo" v-bind:src="cocktail_postform.image_url" />
         </div>
       </div>
-      <button class="heart" v-on:click="countup">いいね！</button>
-      <div class="iine_count">
-        {{ count }}
-      </div>
     </div>
   </div>
 </template>
@@ -42,16 +37,27 @@ import { db } from "@/firebase"
 export default {
   data() {
     return {
-      count: 0,
+      keyword: "",
+
       cocktail_postforms: [],
     }
   },
-  methods: {
-    countup: function () {
-      this.count += 1
+
+  computed: {
+    filteredcocktail_postforms: function () {
+      var cocktail_postforms = []
+
+      for (var i in this.cocktail_postforms) {
+        var cocktail_postform = this.cocktail_postforms[i]
+
+        if (cocktail_postforms.name.indexOf(this.keyword) !== -1) {
+          cocktail_postforms.push(cocktail_postform)
+        }
+      }
+
+      return cocktail_postforms
     },
   },
-
   created() {
     getDocs(collection(db, "cocktail_postforms")).then((snapshot) => {
       snapshot.forEach((doc) => {
@@ -67,7 +73,6 @@ export default {
 
 <style>
 .C_app {
-  background-color: #ffffbb;
   padding: 5%;
 }
 .idou {
@@ -83,15 +88,7 @@ export default {
   border: 10px solid transparent;
   border-radius: 35px;
 }
-.C_kensaku {
-  text-align: center;
-  position: relative;
-  left: 50%;
-  width: 8rem;
-  background-color: #baddff;
-  border: 10px solid transparent;
-  border-radius: 35px;
-}
+
 .C_post_box {
   position: relative;
   margin: 2em 0 2em 40px;
