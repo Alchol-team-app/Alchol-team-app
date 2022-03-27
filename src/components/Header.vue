@@ -11,16 +11,16 @@
         <router-link to="/logout" class="nav__item nav__link">
           logout</router-link
         >
-        <router-link to="/cocktail1" class="nav__item nav__link"
+        <router-link to="/cocktail_browsing" class="nav__item nav__link"
           >カクテル紹介</router-link
         >
-        <router-link to="/cocktail2/" class="nav__item nav__link"
+        <router-link to="/cocktail_postform" class="nav__item nav__link"
           >カクテル投稿</router-link
         >
-        <router-link to="/zizake1" class="nav__item nav__link"
+        <router-link to="/browsingpage/:id" class="nav__item nav__link"
           >地酒紹介</router-link
         >
-        <router-link to="/zizake2" class="nav__item nav__link"
+        <router-link to="/postform" class="nav__item nav__link"
           >地酒投稿</router-link
         >
       </div>
