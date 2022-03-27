@@ -5,7 +5,7 @@
 
       <div class="nav__items">
         <router-link to="/home" class="nav__item nav__link">Home</router-link>
-        <router-link to="/cocktail1" class="nav__item nav__link"
+        <router-link to="/cocktail_browsing" class="nav__item nav__link"
           >カクテル紹介</router-link
         >
         <router-link to="/cocktail_postform" class="nav__item nav__link"

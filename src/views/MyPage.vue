@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "@/firebase"
 import Header from "@/components/Header.vue"
@@ -55,7 +56,23 @@ export default {
       postforms: [],
     }
   },
-  methods: {},
+  methods: {
+    user_AUTH() {
+      const auth = getAuth()
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          const uid = user.uid
+          // ...
+          console.log(uid)
+        } else {
+          // User is signed out
+          // ...
+        }
+      })
+    },
+  },
   created() {
     getDocs(collection(db, "cocktail_postforms")).then((snapshot) => {
       snapshot.forEach((doc) => {
