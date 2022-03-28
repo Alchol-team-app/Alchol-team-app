@@ -2,7 +2,11 @@
   <Header />
   <div class="C_app">
     <div class="idou"></div>
-    検索<input type="text" v-model="keyword" />
+    <div class="search-wrap">
+      <label class="search">
+        <input type="text" v-model="keyword" placeholder="検索" />
+      </label>
+    </div>
     <div
       class="C_post_box"
       v-for="cocktail_postform in filteredcocktail_postforms"
@@ -144,6 +148,29 @@ export default {
   margin: 0;
   padding: 0;
 }
+.search-wrap {
+  position: relative;
+  width: 80%;
+  margin: 40px 3%;
+}
+.search-wrap input[type="text"] {
+  font: 15px/24px sans-serif;
+  box-sizing: border-box;
+  width: 25em;
+  padding: 0.3em;
+  transition: 0.3s;
+  letter-spacing: 1px;
+  color: #aaaaaa;
+  border: 1px solid #1b2538;
+  border-radius: 4px;
+}
+.search input[type="text"]:focus {
+  width: 25em;
+  border: 1px solid #da3c41;
+  outline: none;
+  box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
+}
+
 .star5_rating {
   position: relative;
   z-index: 0;
