@@ -4,7 +4,7 @@
     <div class="sub">カクテル投稿履歴</div>
     <div
       class="C_post_box"
-      v-for="cocktail_postform in cocktail_postforms"
+      v-for="cocktail_postform in checkAuth"
       :key="cocktail_postform.id"
     >
       <p>id：{{ cocktail_postform.id }}<br /></p>
@@ -28,16 +28,22 @@
     </div>
   </div>
   <div class="sub">地酒投稿履歴</div>
-  <div class="post_box" v-for="postform in postforms" :key="postform.id">
+  <div class="post_box" v-for="postform in checkAuth1" :key="postform.id">
+    <p>id:{{ postform.id }}<br /></p>
     <p>
-      {{ postform.id }}<br />
-      {{ postform.bought }}<br />
-      {{ postform.name }}<br />
-      {{ postform.area }}<br />
-      {{ postform.text }}<br />
-
-      <img src="" />
+      <span class="star5_rating" v-bind:data-rate="postform.point"></span>
+      {{ postform.point }}
     </p>
+    <div class="post_box_text">
+      <p>
+        購入日：{{ postform.bought }}<br />
+        お酒の名称：{{ postform.name }} （{{ postform.area }}）<br />
+        {{ postform.text }}<br />
+      </p>
+      <div class="photo_frame">
+        <img class="photo" v-bind:src="postform.image_url" />
+      </div>
+    </div>
   </div>
   <Footer />
 </template>
@@ -57,15 +63,14 @@ export default {
     }
   },
   methods: {
-    user_AUTH() {
+    AUTH() {
       const auth = getAuth()
       onAuthStateChanged(auth, (user) => {
         if (user) {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
-          const uid = user.uid
+          this.uid = user.uid
           // ...
-          console.log(uid)
         } else {
           // User is signed out
           // ...
@@ -91,6 +96,18 @@ export default {
             })
         })
       })
+  },
+  computed: {
+    checkAuth() {
+      return this.cocktail_postforms.filter((cocktail_postform) => {
+        return cocktail_postform.user_name !== this.uid
+      })
+    },
+    checkAuth1() {
+      return this.postforms.filter((postform) => {
+        return postform.user_name !== this.uid
+      })
+    },
   },
   components: { Header, Footer },
 }
