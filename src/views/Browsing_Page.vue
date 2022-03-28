@@ -3,10 +3,9 @@
   <div class="app">
     <nav class="navigation">
       <div>{{ this.$route.params.id }}</div>
-      <router-link to="/postform" class="toukou">投稿</router-link>
     </nav>
     <div class="post_box" v-for="postform in resultKey" :key="postform.id">
-      <p>id:{{ postform.id }}<br /></p>
+      <p>id:{{ postform.user_name }}<br /></p>
       <p>
         <span class="star5_rating" v-bind:data-rate="postform.point"></span>
         {{ postform.point }}
@@ -63,7 +62,6 @@ export default {
 
 <style>
 .app {
-  background-color: antiquewhite;
   padding: 5%;
 }
 .photo_frame {
@@ -84,7 +82,7 @@ export default {
   position: relative;
   margin: 2em 0 2em 40px;
   padding: 8px 15px;
-  background: #d3b2b2;
+  background: white;
   border-radius: 30px;
 }
 .post_box:before {
@@ -94,7 +92,7 @@ export default {
   font-size: 15px;
   left: -40px;
   bottom: 0;
-  color: #d3b2b2;
+  color: white;
 }
 .post_box:after {
   font-family: FontAwesome;
@@ -103,7 +101,7 @@ export default {
   font-size: 23px;
   left: -23px;
   bottom: 0;
-  color: #d3b2b2;
+  color: white;
 }
 .post_box p {
   margin: 0;

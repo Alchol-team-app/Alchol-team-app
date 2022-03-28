@@ -2,19 +2,13 @@
   <Header />
   <div class="C_app">
     <div class="idou"></div>
-    <nav class="navigation">
-      <router-link to="/cocktail_postform" class="C_toukou">投稿</router-link>
-      <div class="C_kensaku">検索</div>
-    </nav>
+    検索<input type="text" v-model="keyword" />
     <div
       class="C_post_box"
-      v-for="cocktail_postform in cocktail_postforms"
+      v-for="cocktail_postform in filteredcocktail_postforms"
       :key="cocktail_postform.id"
     >
-      <p>id：{{ cocktail_postform.id }}<br /></p>
-      <p>
-        {{ cocktail_postform.user_name }}
-      </p>
+      <p>id:{{ cocktail_postform.user_name }}<br /></p>
       <p>
         <span
           class="star5_rating"
@@ -46,6 +40,7 @@ import Footer from "@/components/Footer.vue"
 export default {
   data() {
     return {
+      keyword: "",
       cocktail_postforms: [],
     }
   },
@@ -61,41 +56,37 @@ export default {
     })
   },
   components: { Header, Footer },
+
+  computed: {
+    filteredcocktail_postforms: function () {
+      var cocktail_postforms = []
+
+      for (var i in this.cocktail_postforms) {
+        var cocktail_postform = this.cocktail_postforms[i]
+
+        if (
+          cocktail_postform.name.indexOf(this.keyword) !== -1 ||
+          cocktail_postform.cocktail.indexOf(this.keyword) !== -1
+        ) {
+          cocktail_postforms.push(cocktail_postform)
+        }
+      }
+
+      return cocktail_postforms
+    },
+  },
 }
 </script>
 
 <style>
 .C_app {
-  background-color: #ffffbb;
   padding: 5%;
-}
-.idou {
-  display: inline;
-}
-.C_toukou {
-  padding: auto;
-  position: relative;
-  left: 10%;
-  width: 8rem;
-  text-align: center;
-  background-color: #baddff;
-  border: 10px solid transparent;
-  border-radius: 35px;
-}
-.C_kensaku {
-  text-align: center;
-  position: relative;
-  left: 50%;
-  width: 8rem;
-  background-color: #baddff;
-  border: 10px solid transparent;
-  border-radius: 35px;
 }
 .C_post_box {
   position: relative;
   margin: 2em 0 2em 40px;
   padding: 8px 15px;
-  background: #ddbaff;
+  background: white;
   border-radius: 30px;
 }
 .C_post_box:before {
@@ -105,7 +96,7 @@ export default {
   font-size: 15px;
   left: -40px;
   bottom: 0;
-  color: #ddbaff;
+  color: white;
 }
 .C_post_box:after {
   font-family: FontAwesome;
@@ -114,7 +105,7 @@ export default {
   font-size: 23px;
   left: -23px;
   bottom: 0;
-  color: #ddbaff;
+  color: white;
 }
 .C_post_box p {
   margin: 0;
@@ -199,28 +190,4 @@ export default {
 .star5_rating[data-rate="0"]:after {
   width: 0%;
 } /* 星0 */
-.heart {
-  border-radius: 3px;
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 220px;
-  padding: 10px 25px;
-  color: #fff;
-  transition: 0.3s ease-in-out;
-  font-weight: 600;
-  background: rgb(245, 173, 221);
-}
-.heart:hover {
-  background: rgb(253, 146, 146);
-}
-.iine_count {
-  position: relative;
-  background: #fff;
-  width: 5rem;
-  text-align: center;
-  left: 45%;
-}
 </style>
