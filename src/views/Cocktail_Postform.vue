@@ -312,7 +312,7 @@ textarea::placeholder {
   padding: 0.5em 1em;
   border: solid 3px #9088e3;
   border-radius: 8px;
-  background-color: ivory;
+  background-color: white;
 
   height: 100%;
 }
