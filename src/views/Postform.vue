@@ -235,6 +235,7 @@ export default {
           })
         }
       )
+      this.$router.push("/home")
     },
   },
   components: { Header, Footer },
@@ -287,7 +288,7 @@ textarea::placeholder {
   display: flex;
 }
 .image_preview img {
-  width: 100%;
+  width: 50%;
 }
 .photo_button {
   display: inline-block;
@@ -345,7 +346,7 @@ textarea::placeholder {
   padding: 0.5em 1em;
   border: solid 3px #990000;
   border-radius: 8px;
-  background-color: ivory;
+  background-color: white;
   height: 100%;
 }
 .textbox .text_title {
