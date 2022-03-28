@@ -5,7 +5,6 @@
       <div>{{ this.$route.params.id }}</div>
     </nav>
     <div class="post_box" v-for="postform in resultKey" :key="postform.id">
-      <p>id:{{ postform.user_name }}<br /></p>
       <p>
         <span class="star5_rating" v-bind:data-rate="postform.point"></span>
         {{ postform.point }}

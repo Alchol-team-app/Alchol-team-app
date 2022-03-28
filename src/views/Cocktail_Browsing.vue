@@ -8,7 +8,7 @@
       v-for="cocktail_postform in filteredcocktail_postforms"
       :key="cocktail_postform.id"
     >
-      <p>id:{{ cocktail_postform.user_name }}<br /></p>
+      <p>id：{{ cocktail_postform.id }}<br /></p>
       <p>
         <span
           class="star5_rating"
