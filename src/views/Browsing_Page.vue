@@ -2,7 +2,7 @@
   <Header />
   <div class="app">
     <nav class="navigation">
-      <div>{{ this.$route.params.id }}</div>
+      <div class="pref_name">{{ this.$route.params.id }}</div>
     </nav>
     <div class="post_box" v-for="postform in resultKey" :key="postform.id">
       <p>
@@ -62,6 +62,14 @@ export default {
 <style>
 .app {
   padding: 5%;
+}
+.pref_name {
+  text-align: center;
+  font-size: 3em;
+  color: #000;
+  padding: 1rem 2rem;
+  border-bottom: 3px solid #000;
+  background: #f4f4f4;
 }
 .photo_frame {
   text-align: center;
