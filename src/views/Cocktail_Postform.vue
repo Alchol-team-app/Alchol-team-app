@@ -216,6 +216,7 @@ export default {
           })
         }
       )
+      this.$router.push("/home")
     },
   },
   components: { Header, Footer },
